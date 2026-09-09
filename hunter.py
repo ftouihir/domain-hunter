@@ -87,7 +87,7 @@ def generate_candidate_domains(keyword: str, niche: str, tlds=[".com", ".io", ".
     Focus on short, memorable combinations likely to be unregistered or expiring.
     """
     response = client.models.generate_content(
-        model="gemini-1.5-flash",
+        model="gemini-2.5-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
@@ -99,7 +99,7 @@ def generate_candidate_domains(keyword: str, niche: str, tlds=[".com", ".io", ".
 def evaluate_domain(domain_name: str, status_info: dict) -> DomainAnalysis:
     prompt = f"Analyze domain potential: {domain_name}. Availability Info: {status_info}"
     response = client.models.generate_content(
-        model="gemini-1.5-flash",
+        model="gemini-2.5-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
             system_instruction="""
